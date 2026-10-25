@@ -5,11 +5,17 @@ import { UserFormComponent } from '../component/user-form/user-form.component';
 import { UserDetailComponent } from '../component/user-detail/user-detail.component';
 
 const routes: Routes = [
-  { 
-     path: '',
-    redirectTo:'users',
-    component:UserDashComponent
+  {
+    path: '',
+    redirectTo: 'users',
+    pathMatch: 'full'
   },
+
+  {
+    path: 'users',
+    component: UserDashComponent
+  },
+
   {
     path:'users/add',
     component:UserFormComponent
