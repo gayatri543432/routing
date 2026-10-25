@@ -87,8 +87,6 @@ patchAdd(){
       }else if(!val && this.userInfo){
         this.usersForm.get('address.permanent')?.enable()
         this.usersForm.get('address.permanent')?.patchValue(this.userInfo.address.permanent)
-
-
       }
       else{
         this.usersForm.get('address.permanent')?.reset()
