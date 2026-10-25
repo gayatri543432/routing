@@ -22,8 +22,10 @@ export class UserFormComponent implements OnInit {
   ngOnInit(): void {
     this.createForm()
   this.enableAdd()
+  
   this.patchAdd()
   this.patchUserById()
+  
   }
 
 
@@ -53,7 +55,7 @@ export class UserFormComponent implements OnInit {
     })
     ,
      isAddSame:new FormControl({
-  value: false,
+  value:false,
   disabled: true
 })
     })
@@ -117,7 +119,7 @@ patchUserById(){
         next:res=>{
           this.userInfo=res
           this.usersForm.patchValue(res)
-
+           
           this.skillsArray.clear();
 
           res.skills.forEach((skill: string) => {
@@ -128,28 +130,12 @@ patchUserById(){
             this.usersForm.get('isAddSame')?.enable();
 
           if (res.isAddSame) {
+            
             this.usersForm.get('isAddSame')?.patchValue(true);
-          }
+            this.usersForm.get('address.permanent')?.disable()
 
-          if(res.isAddSame){
-            let currAdd=this.usersForm.get('address.current')?.getRawValue()
-            this.usersForm.get('address.permanent')?.enable({
-              emitEvent: false
-            })
-            this.usersForm.get('address.permanent')?.patchValue(currAdd, {
-              emitEvent: false
-            })
-            this.usersForm.get('address.permanent')?.disable({
-              emitEvent: false
-            })
-            this.usersForm.get('isAddSame')?.patchValue(true, {
-              emitEvent: false
-            })
-          }else{
-            this.usersForm.get('address.permanent')?.enable({
-              emitEvent: false
-            })
           }
+    
 
         },
         error:err=>{
@@ -159,6 +145,7 @@ patchUserById(){
   }
 }
 
+  
   onSignUp(){
     if(this.usersForm.invalid){
       this.usersForm.markAllAsTouched()
