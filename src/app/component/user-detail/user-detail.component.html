@@ -1,0 +1,84 @@
+
+<div class="row">
+  <div class="col-md-4">
+      <mat-card class="mb-4">
+        <img mat-card-image [src]="userDetails.profileImage" (error)="userDetails.profileImage = 'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o='">
+        <h4 class="font-weight-bold"
+        >
+          {{userDetails.userName}} <small>({{userDetails.userRole}})</small>
+
+        </h4>
+        <p>{{userDetails.profileDescription}}</p>
+
+        <mat-card-actions class="d-flex justify-content-between">
+           <button
+           routerLink="edit"
+           mat-raised-button color="primary">Edit</button>
+           <button (click)="onRemove()" type="button" mat-raised-button color="warn">Remove</button>
+
+        </mat-card-actions>
+      </mat-card>
+  </div>
+  <div class="col-md-8">
+
+    <mat-card class="mb-4">
+      <h4>Basic Information</h4>
+      <p class="m-0">User Id : {{userDetails.userId}}</p>
+      <p class="m-0">Experience: {{userDetails.experienceYears}}</p>
+      <p class="m-0">Status : 
+        <span
+        [ngClass]="{
+          'badge-success':userDetails.isActive,
+          'badge-danger':!userDetails.isActive
+        }"
+        class="badge">{{userDetails.isActive?'Yes':'No'}}</span>
+      </p>
+    </mat-card>
+
+    <mat-card class="mb-4">
+      <h4 class="font-weight-bold">Skills</h4>
+      <mat-chip-list>
+        <mat-chip *ngFor="let skill of userDetails.skills">
+          {{skill}}
+        </mat-chip>
+      </mat-chip-list>
+    </mat-card>
+
+    <mat-card>
+      <div class="row">
+        <div class="col-md-6">
+          <h4>Current Address</h4>
+            <p class="m-0">
+              Country : {{userDetails.address.current.country}}
+            </p>
+            <p class="m-0">
+              State : {{userDetails.address.current.state}}
+            </p>
+            <p class="m-0">
+              City : {{userDetails.address.current.city}}
+            </p>
+            <p class="m-0">
+              Zipcode : {{userDetails.address.current.zipcode}}
+            </p>
+        </div>
+        <div class="col-md-6">
+           <h4>Permanent Address</h4>
+            <p class="m-0">
+              Country : {{userDetails.address.permanent.country}}
+            </p>
+            <p class="m-0">
+              State : {{userDetails.address.permanent.state}}
+            </p>
+            <p class="m-0">
+              City : {{userDetails.address.permanent.city}}
+            </p>
+            <p class="m-0">
+              Zipcode : {{userDetails.address.permanent.zipcode}}
+            </p>
+        </div>
+      
+      </div>
+    </mat-card>
+
+  </div>
+</div>

@@ -1,0 +1,172 @@
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+
+                <form [formGroup]="usersForm" (ngSubmit)="onSignUp()">
+
+                    <h2 class="text-center font-weight-bold">{{isInEditMode?'Update User':'Add User'}}</h2>
+
+                    <div class="form-group">
+                        <label for="userName">User Name*</label>
+                        <input type="text" formControlName="userName" class="form-control">
+                        <strong class="text-danger " *ngIf="usersForm.get('userName')?.touched && usersForm.get('userName')?.hasError('required')">User Name is required feild.</strong>
+                    </div>
+                    <div class="form-group">
+                        <label for="userRole">userRole*</label>
+                        <select type="text" formControlName="userRole" class="form-control">
+                            <option value="Admin">Admin</option>
+                            <option value="Candidate">Candidate</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="profileDescription">Profile Description*</label>
+                        <textarea rows="4"  formControlName="profileDescription" class="form-control"></textarea>
+                        <strong class="text-danger " *ngIf="usersForm.get('profileDescription')?.touched && usersForm.get('profileDescription')?.hasError('required')">Profile Description is required feild.</strong>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="profileImage">Profile Image*</label>
+                        <input type="text" formControlName="profileImage" class="form-control">
+                        <strong class="text-danger " *ngIf="usersForm.get('profileImage')?.touched && usersForm.get('profileImage')?.hasError('required')">Profile Image is required feild.</strong>
+                        
+                    </div>
+                    
+
+                    
+                    <div class="from-group">
+                        <label for="experienceYears">Experience Years*</label>
+                        <input type="text" formControlName="experienceYears" class="form-control">
+                        <strong class="text-danger " *ngIf="usersForm.get('experienceYears')?.touched && usersForm.get('experienceYears')?.hasError('required')">Experience Years is required feild.</strong>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="isActive">Status*</label>
+                        <select formControlName="isActive" class="form-control">
+                            <option [ngValue]="true">Yes</option>
+                            <option [ngValue]="false">No</option>
+                        </select>
+                        <strong class="text-danger " *ngIf="usersForm.get('isActive')?.touched && usersForm.get('isActive')?.hasError('required')">Status is required feild.</strong>
+
+                    </div>
+
+                    <div class="row" formGroupName="address">
+                        <div class="col-md-6">
+                            <h4 class="font-weight-bold">
+                                Current Address
+                            </h4>
+                            <div  formGroupName="current">
+
+                                <div class="form-group">
+                                    <label for="city">City*</label>
+                                    <input type="text" formControlName="city" class="form-control">
+                                   <strong class="text-danger " *ngIf="usersForm.get('address.current.city')?.touched && usersForm.get('address.current.city')?.hasError('required')">City is required feild.</strong>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State*</label>
+                                    <input type="text" formControlName="state" class="form-control">
+                                   <strong class="text-danger " *ngIf="usersForm.get('address.current.state')?.touched && usersForm.get('address.current.state')?.hasError('required')">State is required feild.</strong>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="country">Country*</label>
+                                    <input type="text" formControlName="country" class="form-control">
+                                   <strong class="text-danger " *ngIf="usersForm.get('address.current.country')?.touched && usersForm.get('address.current.country')?.hasError('required')">Country is required feild.</strong>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipcode">Zipcode*</label>
+                                    <input type="text" formControlName="zipcode" class="form-control">
+                                   <strong class="text-danger " *ngIf="usersForm.get('address.current.zipcode')?.touched && usersForm.get('address.current.zipcode')?.hasError('required')">Zipcode is required feild.</strong>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                              <h4 class="font-weight-bold">
+                                Permanent Address
+                            </h4>
+                            <div  formGroupName="permanent">
+
+                                <div class="form-group">
+                                    <label for="city">City*</label>
+                                    <input type="text" formControlName="city" class="form-control">
+                                   <strong class="text-danger " *ngIf="usersForm.get('address.permanent.city')?.touched && usersForm.get('address.permanent.city')?.hasError('required')">City is required feild.</strong>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">State*</label>
+                                    <input type="text" formControlName="state" class="form-control">
+                                   <strong class="text-danger " *ngIf="usersForm.get('address.permanent.state')?.touched && usersForm.get('address.permanent.state')?.hasError('required')">State is required feild.</strong>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="country">Country*</label>
+                                    <input type="text" formControlName="country" class="form-control">
+                                   <strong class="text-danger " *ngIf="usersForm.get('address.permanent.country')?.touched && usersForm.get('address.permanent.country')?.hasError('required')">Country is required feild.</strong>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="zipcode">Zipcode*</label>
+                                    <input type="text" formControlName="zipcode" class="form-control">
+                                   <strong class="text-danger " *ngIf="usersForm.get('address.permanent.zipcode')?.touched && usersForm.get('address.permanent.zipcode')?.hasError('required')">Zipcode is required feild.</strong>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label for="isAddSame" >
+                                <input id="isAddSame" type="checkbox" formControlName="isAddSame">Permanent address same as current address.
+                            </label>
+                        </div>
+                    </div>
+
+                    <div formArrayName="skills">
+                        <div class="row mb-2" *ngFor="let skill of skillsArray.controls ; let i=index">
+                            <div class="col-md-10">
+                                <input type="text" [formControlName]="i" class="form-control">
+                                <strong
+                                    class="text-danger"
+                                    *ngIf="skill.touched && skill.hasError('required')">
+                                    Skill is required field.
+                                </strong>
+
+                            </div>
+                            <div class="col-md-2" *ngIf="i>0">
+                                <button
+                                type="button"
+                                mat-raised-button
+                                (click)="onRemove(i)"
+                                color="warn"
+                                >Remove</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col">
+                            <button type="button" (click)="addSkills()" mat-raised-button color="accent">Add Skill</button>
+                        </div>
+                    </div>
+
+                    <button
+                    *ngIf="!isInEditMode"
+                    class="btn-block" type="submit" mat-raised-button color="primary">Submit</button>
+                    <button
+                    *ngIf="isInEditMode"
+                    (click)="onUpdate()"
+                    class="btn-block" type="button" mat-raised-button color="primary">Update</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

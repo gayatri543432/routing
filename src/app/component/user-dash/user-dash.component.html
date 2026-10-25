@@ -1,0 +1,30 @@
+
+<div class="container">
+    <div class="row">
+            <div class="col-md-12 text-center mb-2">
+                 <h2 class="text-white">Manage and view all users</h2>
+            </div>
+
+        <div class="col-md-12 text-right" >
+               
+            <button 
+            routerLink="/users/add"
+            class="btn btn-outline-primary btn-sm mb-2">Add User</button>
+             
+        </div>
+        <div class="col-md-6  offset-3">
+            
+            <ul class="list-group">
+                <li class="list-group-item"
+                 *ngFor="let user of usersArr"
+                 [routerLink]="['/users',user.userId]"
+                 >
+                        {{user.userName}}
+                </li>
+            </ul>
+        </div>
+       
+
+        
+    </div>
+</div>
