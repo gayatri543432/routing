@@ -14,7 +14,9 @@ export class UserDashComponent implements OnInit {
   ngOnInit(): void {
     this.getData()
   }
-
+  trackById(index:number,user:User){
+    return user.userId
+  }
   getData(){
     this._service.fetchData()
       .subscribe({
