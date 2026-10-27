@@ -15,7 +15,10 @@ import { GetConfirmComponent } from './component/get-confirm/get-confirm.compone
 import { HTTP_INTERCEPTORS, HttpClientModule  } from '@angular/common/http';
 import { AuthInterceptor } from './services/auth-interceptor.service';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { ProductDashComponent } from './component/product-dash/product-dash.component';
+import { ProductDetailComponent } from './component/product-detail/product-detail.component';
+import { ProductFormComponent } from './component/product-form/product-form.component';
+import { MatDividerModule } from '@angular/material/divider';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +26,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     UserDetailComponent,
     UserFormComponent,
     NavbarComponent,
-    GetConfirmComponent
+    GetConfirmComponent,
+    ProductDashComponent,
+    ProductDetailComponent,
+    ProductFormComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDividerModule
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

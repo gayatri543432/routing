@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        
+<div class="card">
+    <div class="card-body">
+        <form [formGroup]="ProductForm" (ngSubmit)="onSubmit()">
+            <h2 class="text-center ">{{isInEditMode?'Update Product':'Add Product'}}</h2>
+            <div class="form-group">
+                <label for="pname">Product Name*</label>
+                <input type="text" class="form-control" formControlName="pname">
+                <strong class="text-danger" *ngIf="ProductForm.get('pname')?.touched && ProductForm.get('pname')?.hasError('required')">Product name is required field.</strong>
+            </div>
+
+            <div class="form-group">
+                <label for="pstatus">Product Status*</label>
+                <select formControlName="pstatus" class="form-control">
+                    <option value="In-Progress">In-Progress</option>
+                    <option value="Dispatched">Dispatched</option>
+                    <option value="Delivered">Delivered</option>
+
+                </select>
+                <!-- <strong class="text-danger" *ngIf="ProductForm.get('pstatus')?.touched && ProductForm.get('pstatus')?.hasError('required')">Product Status is required field.</strong> -->
+
+            </div>
+
+            <div class="form-group">
+                <label for="canReturn">Can Return*</label>
+                <select formControlName="canReturn" class="form-control">
+                    <option [ngValue]="1">Return Available</option>
+                    <option [ngValue]="0">Non-Returnable</option>
+                </select>
+                <strong class="text-danger" *ngIf="ProductForm.get('canReturn')?.touched && ProductForm.get('canReturn')?.hasError('required')">Can Return is required field.</strong>
+                
+            </div>
+
+            <button class="btn-block" *ngIf="!isInEditMode" type="submit" mat-raised-button color="primary">Add Product</button>
+            <button class="btn-block" *ngIf="isInEditMode" type="button" mat-raised-button color="accent" (click)="onUpdate()">Update Product</button>
+
+        </form>
+    </div>
+</div>
+    </div>
+</div>

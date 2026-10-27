@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        
+<mat-card>
+
+        <h2 class="text-white">{{prodData.pname}}</h2>
+    <mat-divider inset></mat-divider>
+    <mat-card-content>
+        Product Status :
+         <span
+            class="badge mt-3"
+            [ngClass]="{
+                'badge-warning': prodData.pstatus === 'In-Progress',
+                'badge-info': prodData.pstatus === 'Dispatched',
+                'badge-success': prodData.pstatus === 'Delivered'
+            }">
+            {{ prodData.pstatus }}
+        </span>
+        <p>Can Return :{{ prodData.canReturn === 1 ? 'Return Available' : 'Non-Returnable' }}</p>
+     </mat-card-content>
+
+    <mat-card-actions class="d-flex justify-content-between">
+    <button type="button" mat-raised-button color="primary" routerLink="edit">Edit</button>
+    <button type="button" mat-raised-button color="warn" (click)="onRemove()">Remove</button>
+  </mat-card-actions>
+
+</mat-card>
+    </div>
+</div>

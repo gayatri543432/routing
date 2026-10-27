@@ -128,10 +128,8 @@ patchUserById(){
             this.usersForm.get('isAddSame')?.enable();
 
           if (res.isAddSame) {
-            
             this.usersForm.get('isAddSame')?.patchValue(true);
             this.usersForm.get('address.permanent')?.disable()
-
           }
     
 
@@ -149,13 +147,9 @@ patchUserById(){
       this.usersForm.markAllAsTouched()
     }else{
       let newUser={
-        ...this.usersForm.getRawValue(),
-        userId:this.isInEditMode ? this.editId : Date.now().toString()
+        ...this.usersForm.getRawValue()
       }
-      const saveRequest = this.isInEditMode
-        ? this._service.updateUser(newUser)
-        : this._service.createUser(newUser)
-      saveRequest
+      this._service.createUser(newUser)
         .subscribe({
           next:res=>{
             console.log(res)

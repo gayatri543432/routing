@@ -1,7 +1,7 @@
     import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
     import { inject,  Injectable } from "@angular/core";
     import { catchError, finalize, Observable, throwError } from "rxjs";
-import { SpinnerService } from "./spinner.service";
+    import { SpinnerService } from "./spinner.service";
 
     @Injectable({
         providedIn:'root'

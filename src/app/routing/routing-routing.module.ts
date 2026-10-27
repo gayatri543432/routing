@@ -3,6 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserDashComponent } from '../component/user-dash/user-dash.component';
 import { UserFormComponent } from '../component/user-form/user-form.component';
 import { UserDetailComponent } from '../component/user-detail/user-detail.component';
+import { ProductDashComponent } from '../component/product-dash/product-dash.component';
+import { ProductFormComponent } from '../component/product-form/product-form.component';
+import { ProductDetailComponent } from '../component/product-detail/product-detail.component';
 
 const routes: Routes = [
   {
@@ -27,6 +30,22 @@ const routes: Routes = [
   {
     path:'users/:id/edit',
     component:UserFormComponent
+  },
+  {
+    path:'products',
+    component:ProductDashComponent
+  },
+  {
+    path:'products/add',
+    component:ProductFormComponent
+  },
+  {
+    path:'products/:id',
+    component:ProductDetailComponent
+  },
+  {
+    path:'products/:id/edit',
+    component:ProductFormComponent
   }
 ];
 
