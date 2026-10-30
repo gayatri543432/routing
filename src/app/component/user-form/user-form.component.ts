@@ -21,10 +21,9 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.createForm()
-  this.enableAdd()
-  
-  this.patchAdd()
-  this.patchUserById()
+    this.enableAdd()
+    this.patchAdd()
+    this.patchUserById()
   
   }
 
@@ -54,10 +53,10 @@ export class UserFormComponent implements OnInit {
           })
     })
     ,
-     isAddSame:new FormControl({
-  value:false,
-  disabled: true
-})
+        isAddSame:new FormControl({
+        value:false,
+        disabled: true
+    })
     })
    
 

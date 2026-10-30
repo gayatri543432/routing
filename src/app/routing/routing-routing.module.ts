@@ -33,20 +33,23 @@ const routes: Routes = [
   },
   {
     path:'products',
-    component:ProductDashComponent
-  },
+    component:ProductDashComponent,
+    children:[
+     
+       
   {
-    path:'products/add',
+    path:'add',
     component:ProductFormComponent
   },
   {
-    path:'products/:id',
+    path:':id',
     component:ProductDetailComponent
   },
   {
-    path:'products/:id/edit',
+    path:':id/edit',
     component:ProductFormComponent
   }
+    ]}
 ];
 
 @NgModule({

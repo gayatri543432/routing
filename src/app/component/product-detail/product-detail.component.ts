@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IProduct } from 'src/app/model/products';
 import { ProdutService } from 'src/app/services/produt.service';
 import { GetConfirmComponent } from '../get-confirm/get-confirm.component';
 import { filter, switchMap } from 'rxjs';
+import { __param } from 'tslib';
 
 @Component({
   selector: 'app-product-detail',
@@ -21,16 +22,20 @@ export class ProductDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.prodId=this._route.snapshot.params['id']
-    this._prodService.fetchProductById(this.prodId)
-        .subscribe({
-          next:data=>{
-            this.prodData=data
-          },
-          error:err=>{
-            console.log(err)
-          }
-        })
+         this._route.params
+                  .subscribe((param:Params)=>{
+                    this.prodId=param['id']
+                    this._prodService.fetchProductById(this.prodId)
+                          .subscribe({
+                            next:data=>{
+                              this.prodData=data
+                            },
+                            error:err=>{
+                              console.log(err)
+                            }
+                          })
+                  })
+    
   }
 
   onRemove(){
@@ -53,4 +58,13 @@ export class ProductDetailComponent implements OnInit {
       })
     
   }
+
+  // onEdit(id:string,canReturnVal:number){
+  //   this._router.navigate(['edit'],{
+  //     relativeTo:this._route  ,
+  //     queryParams:{
+  //       canReturn:canReturnVal
+  //     }
+  //   })
+  // }
 }
